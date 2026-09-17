@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found | Stackly Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0D1B2A;--ink-soft:#16273D;--ivory:#F6F3EC;--paper:#EFEAE0;
+    --brass:#A9823E;--brass-light:#C9A968;--slate:#445069;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:'Inter',sans-serif;
+    overflow:hidden;
+    position:relative;
+  }
+
+  /* Background texture */
+  .grain{
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(169,130,62,0.08), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(201,169,104,0.06), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .rule-lines{
+    position:fixed;inset:0;
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 39px,
+      rgba(246,243,236,0.025) 40px
+    );
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .container{
+    position:relative;
+    z-index:2;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:24px;
+  }
+
+  .mark{
+    font-family:'Inter',sans-serif;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    font-size:11px;
+    color:var(--brass-light);
+    opacity:0.85;
+    margin-bottom:36px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .mark::before,.mark::after{
+    content:'';
+    width:32px;
+    height:1px;
+    background:var(--brass);
+    opacity:0.6;
+  }
+
+  .digits{
+    font-family:'Fraunces',serif;
+    font-weight:300;
+    font-size:clamp(120px, 22vw, 260px);
+    line-height:0.9;
+    letter-spacing:-0.02em;
+    color:var(--ivory);
+    position:relative;
+    display:flex;
+    gap:0.02em;
+  }
+  .digits span{
+    display:inline-block;
+    position:relative;
+  }
+  .digits .zero{
+    color:var(--brass);
+    font-style:italic;
+    font-weight:300;
+  }
+
+  .divider{
+    width:64px;
+    height:1px;
+    background:linear-gradient(to right, transparent, var(--brass-light), transparent);
+    margin:32px 0 28px;
+  }
+
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(24px, 3.4vw, 34px);
+    letter-spacing:0.01em;
+    margin-bottom:14px;
+    color:var(--ivory);
+  }
+
+  p.lede{
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    font-size:15.5px;
+    line-height:1.7;
+    color:var(--slate);
+    max-width:440px;
+    margin-bottom:44px;
+  }
+  p.lede em{
+    color:var(--brass-light);
+    font-style:italic;
+  }
+
+  .actions{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  .btn{
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:16px 34px;
+    border-radius:2px;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+  }
+
+  .btn-primary{
+    background:var(--brass);
+    color:var(--ink);
+    border-color:var(--brass);
+  }
+  .btn-primary:hover{
+    background:var(--brass-light);
+    border-color:var(--brass-light);
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(169,130,62,0.25);
+  }
+
+  .btn-ghost{
+    background:transparent;
+    color:var(--ivory);
+    border-color:rgba(246,243,236,0.22);
+  }
+  .btn-ghost:hover{
+    border-color:var(--brass-light);
+    color:var(--brass-light);
+    transform:translateY(-2px);
+  }
+
+  .btn svg{
+    width:15px;height:15px;
+    transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);
+  }
+  .btn-ghost:hover svg{ transform:translateX(-4px); }
+  .btn-primary:hover svg{ transform:translateX(3px); }
+
+  footer{
+    position:fixed;
+    bottom:28px;
+    left:0;right:0;
+    text-align:center;
+    font-size:10.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--slate);
+    z-index:2;
+    opacity:0.7;
+  }
+
+  @media (max-width:520px){
+    .actions{flex-direction:column;width:100%;max-width:300px;}
+    .btn{justify-content:center;width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="rule-lines"></div>
+
+<div class="container">
+  <div class="mark" data-anim="mark">Stackly Consulting</div>
+
+  <div class="digits" aria-label="404">
+    <span class="d">4</span><span class="d zero">0</span><span class="d">4</span>
+  </div>
+
+  <div class="divider" data-anim="divider"></div>
+
+  <h1 data-anim="title">This page has left the boardroom</h1>
+  <p class="lede" data-anim="lede">The advisory you're looking for doesn't exist, has been moved, or was <em>filed elsewhere</em>. Let's get you back to solid ground.</p>
+
+  <div class="actions" data-anim="actions">
+    <button class="btn btn-ghost" id="backBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Go Back
+    </button>
+    <a class="btn btn-primary" href="index.html">
+      Return Home
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</div>
+
+<footer>&copy; <span id="year"></span> Stackly Consulting — Advisory &amp; Strategy</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  document.getElementById('backBtn').addEventListener('click', function(){
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.location.href = 'index.html';
+    }
+  });
+
+  window.addEventListener('DOMContentLoaded', function(){
+    const tl = gsap.timeline({defaults:{ease:'power3.out'}});
+
+    gsap.set('[data-anim]', {opacity:0});
+    gsap.set('.digits .d', {opacity:0, y:40});
+    gsap.set('.divider', {scaleX:0});
+
+    tl.to('[data-anim="mark"]', {opacity:0.85, duration:0.6})
+      .to('.digits .d', {
+        opacity:1, y:0, duration:0.9,
+        stagger:0.12,
+        ease:'back.out(1.6)'
+      }, '-=0.2')
+      .to('.divider', {opacity:1, scaleX:1, duration:0.7, ease:'power2.out'}, '-=0.3')
+      .to('[data-anim="title"]', {opacity:1, duration:0.7}, '-=0.4')
+      .to('[data-anim="lede"]', {opacity:1, duration:0.7}, '-=0.45')
+      .to('[data-anim="actions"]', {opacity:1, duration:0.7}, '-=0.45');
+
+    gsap.to('.zero', {
+      rotate: 360,
+      duration: 18,
+      repeat: -1,
+      ease: 'none',
+      transformOrigin:'50% 55%'
+    });
+  });
+</script>
+
+</body>
+</html>
